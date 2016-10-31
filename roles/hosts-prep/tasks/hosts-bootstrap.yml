@@ -1,0 +1,6 @@
+
+- name: Update Package Cache
+  raw: apt-get update
+
+- name: Install Python 2.7
+  raw: apt-get install python2.7 python-minimal

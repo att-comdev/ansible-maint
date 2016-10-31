@@ -1,0 +1,9 @@
+---
+- name: Maintains the Lab
+  become: true
+  hosts: lab_hosts
+  
+
+  roles:
+    - hosts-prep
+#    - user_access
