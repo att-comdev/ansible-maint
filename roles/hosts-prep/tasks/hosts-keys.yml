@@ -73,16 +73,16 @@
   with_items:
     - "{{ssh_users}}"
 
-- stat: path={{root_key}}
-  register: key_exists
-  when: inventory_hostname in groups['deploy']
-  tags:
-    - deploy-rootkey
+#- stat: path={{root_key}}
+#  register: key_exists
+#  when: inventory_hostname in groups['deploy']
+#  tags:
+#    - deploy-rootkey
 
-- name: generate ssh keys for the deployment host
-  shell: ssh-keygen -b 4096 -t rsa -C "root@{{os_domain}}" -f {{root_key}} -q -N ""
-  args:
-    creates: "{{root_key}}"
-  when: (inventory_hostname in groups['deploy'] and key_exists.stat.exists  == False)
-  tags:
-    - deploy-rootkey
+#- name: generate ssh keys for the deployment host
+#  shell: ssh-keygen -b 4096 -t rsa -C "root@{{os_domain}}" -f {{root_key}} -q -N ""
+##  args:
+#    creates: "{{root_key}}"
+#  when: (inventory_hostname in groups['deploy'] and key_exists.stat.exists  == False)
+#  tags:
+#    - deploy-rootkey
