@@ -19,9 +19,9 @@
 - include: hosts-users.yml
 - include: hosts-tools.yml
 - include: hosts-keys.yml
-- include: hosts-apt.yml
 - include: hosts-timezone.yml
 #- include: hosts-modules.yml
+#- include: hosts-apt.yml
 #- include: hosts-routes.yml
 #- include: hosts-key-deploy.yml
 #- include: hosts-networking.yml
