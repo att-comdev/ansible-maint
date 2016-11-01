@@ -1,0 +1,23 @@
+---
+
+admin_group: "sudoers"
+
+users:
+  - name: "arenzo"
+    ssh_key: "{{ lookup('file', 'group_vars/keys/arenzo.pub') }}"
+    admin: true
+
+  - name: "bjozsa"
+    ssh_key: "{{ lookup('file', 'group_vars/keys/bjozsa.pub') }}"
+    admin: true
+
+  - name: "ap2516"
+    ssh_key: "{{ lookup('file', 'group_vars/keys/ap2516.pub') }}"
+    admin: true
+
+  - name: "lr699s"
+    ssh_key: "{{ lookup('file', 'group_vars/keys/lr699s.pub') }}"
+    admin: true
+
+old_users:
+  - name: "test_user"

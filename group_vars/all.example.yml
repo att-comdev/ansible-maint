@@ -1,0 +1,13 @@
+## SSH user to perform Ansible commands
+ansible_user: user
+
+# SSH user public keys need to be loaded into includes/ssh_keys directory:
+## Load public key as name of the user
+ssh_users:
+  - user1
+  - user2
+
+# Root SSH Key on the Deploy Host:
+## In most cases, leave this "as-is"
+root_key: "/root/.ssh/id_rsa"
+

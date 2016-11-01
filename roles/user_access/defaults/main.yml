@@ -1,0 +1,15 @@
+---
+# Overwrite these variables!!!!
+
+users:
+  - name: "user1"
+    ssh_key: "{{ lookup('file', 'user1.pub') }}"
+  - name: "user2"
+    ssh_key: "{{ lookup('file', 'user2.pub') }}"
+  - name: "user3"
+    ssh_key: "{{ lookup('file', 'user3.pub') }}"
+
+
+
+old_users:
+  - name: "user4"

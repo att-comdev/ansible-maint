@@ -1,0 +1,54 @@
+---
+#Deploy SSH and User Accounts
+
+
+#Create the "Admins" group
+#- name: Create Admin Group
+#  group:
+#    name: "{{ admin_group }}"
+#    state: present
+
+#- name: Give admin group access to passwordless sudo
+#  lineinfile:
+#    dest: /etc/sudoers
+#    state: absent
+#    regexp: "'^%{{ admin_group }}'"
+#    line: "'%{{ admin_group }} ALL=(ALL) NOPASSWD: ALL'"
+
+#Create User Accounts
+- name: Deploy User Accounts
+  user:
+    name: "{{ item.name }}"
+    skeleton: createhome
+    shell: /bin/bash
+    state: present
+  with_items:
+    - "{{ users }}"
+
+- name: Add Users to Admin Group
+  user:
+    name: "{{ item.name }}"
+    groups: sudo
+    append: true
+  when: item.admin == true
+  with_items:
+    - "{{ users }}"
+
+#
+#Remove Expired User Accounts
+- name: Delete Old User Accounts
+  user:
+    name: "{{ item.name }}"
+    skeleton: createhome
+    shell: /bin/bash
+    state: absent
+  with_items:
+    - "{{ old_users }}"
+
+
+- name: Deploy SSH Keys
+  authorized_key:
+    user: "{{ item.name }}"
+    key: " {{ item.ssh_key }}"
+  with_items:
+    - "{{ users }}"
