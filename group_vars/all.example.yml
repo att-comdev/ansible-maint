@@ -10,4 +10,4 @@ ssh_users:
 # Root SSH Key on the Deploy Host:
 ## In most cases, leave this "as-is"
 root_key: "/root/.ssh/id_rsa"
-
+os_timezone: "America/New_York"
