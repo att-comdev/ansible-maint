@@ -13,8 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-- name: make sure that os admin accounts exist
-  user: name={{item}} state=present createhome=yes group=nixadmins groups=root,users
-  with_items: "{{ssh_users}}"
+- name: make sure that os admin accounts exists, creates home directory, assigns default shell
+  user: 
+    name: "{{ item }}"
+    state: present
+    createhome: true
+    group: nixadmins
+    groups: root,users
+    shell: /bin/bash
+  with_items: "{{ ssh_users }}"
   tags:
     - all-users
